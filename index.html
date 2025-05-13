@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Here, Let Me Vibe That For You</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="icon" type="image/png" href="src/images/favicon.ico">
+    <meta property="og:title" content="Here, Let Me Vibe That For You">
+    <meta property="og:description" content="For all those questions that could have been answered by Phind">
+    <meta property="og:image" content="src/images/og-image.png">
+    <meta property="og:url" content="https://letmevibethat.com">
+</head>
+<body>
+    <div class="container" id="home-container">
+        <div id="home-page">
+            <div class="title-container">
+                <h1>Here, Let Me Vibe That For You</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Type your question here...">
+                <button id="search-button">Search</button>
+            </div>
+            <div class="instruction">
+                <p>Just paste this link to help people with their questions:</p>
+                <div class="link-container">
+                    <input type="text" id="link-display" readonly>
+                    <button id="copy-button">Copy</button>
+                </div>
+                <p id="copy-message" class="hidden">Link copied to clipboard!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="animation-container" class="hidden">
+        <div id="animation-page">
+            <div class="animation-container">
+                <h1 class="animation-title">Here, Let Me Vibe That For You</h1>
+                <div class="search-box">
+                    <div id="cursor" class="cursor-animation">👆</div>
+                    <div class="input-container">
+                        <span id="typed-text"></span><span class="cursor">|</span>
+                    </div>
+                    <button id="search-now-button">Search</button>
+                </div>
+                <div class="steps">
+                    <div class="step active" id="step1">1. I type in your question</div>
+                    <div class="step" id="step2">2. I click search</div>
+                    <div class="step" id="step3">3. You get your answer</div>
+                </div>
+            </div>
+            <div class="loading hidden" id="loading">
+                <div class="spinner"></div>
+                <p>Redirecting to Phind...</p>
+            </div>
+        </div>
+    </div>
+    <script src="src/js/script.js"></script>
+</body>
+</html>

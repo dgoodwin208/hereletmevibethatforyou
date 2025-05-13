@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:letmegooglethat.com)",
+      "Bash(mkdir:*)",
+      "WebFetch(domain:claude.ai)",
+      "WebFetch(domain:chat.openai.com)",
+      "WebFetch(domain:help.openai.com)",
+      "WebFetch(domain:platform.openai.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(touch:*)"
+    ],
+    "deny": []
+  }
+}

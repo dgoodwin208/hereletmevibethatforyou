@@ -1,0 +1,10 @@
+{
+  "name": "hereletmevibethatforyou",
+  "version": "1.0.0",
+  "description": "A simple tool similar to Let Me Google That For You but for Phind",
+  "scripts": {
+    "dev": "serve"
+  },
+  "author": "",
+  "license": "MIT"
+}
