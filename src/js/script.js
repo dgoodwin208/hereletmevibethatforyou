@@ -12,9 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const cursor = document.getElementById('cursor');
     const loading = document.getElementById('loading');
     const steps = document.querySelectorAll('.step');
+    const shortenUrlCheckbox = document.getElementById('shorten-url');
+    const shorteningStatus = document.getElementById('shortening-status');
     
-    // Phind URL
+    // URL Settings
     const phindUrl = 'https://phind.com/search';
+    let isUrlShortened = false;
+    let originalUrl = '';
+    let shortenedUrl = '';
     
     // Check URL for query parameter
     const urlParams = new URLSearchParams(window.location.search);
@@ -52,6 +57,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // Copy link button
         copyButton.addEventListener('click', copyLink);
         
+        // URL shortener toggle
+        shortenUrlCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                if (!isUrlShortened && searchInput.value.trim() !== '') {
+                    shortenUrl();
+                } else if (isUrlShortened) {
+                    linkDisplay.value = shortenedUrl;
+                }
+            } else {
+                if (originalUrl) {
+                    linkDisplay.value = originalUrl;
+                } else {
+                    updateLink();
+                }
+            }
+        });
+        
         // Initialize link
         updateLink();
     }
@@ -61,9 +83,56 @@ document.addEventListener('DOMContentLoaded', function() {
         const query = searchInput.value.trim();
         if (query === '') {
             linkDisplay.value = window.location.origin + window.location.pathname;
+            originalUrl = linkDisplay.value;
         } else {
             linkDisplay.value = `${window.location.origin}${window.location.pathname}?q=${encodeURIComponent(query)}`;
+            originalUrl = linkDisplay.value;
+            
+            // If URL shortening is checked, shorten the URL
+            if (shortenUrlCheckbox.checked) {
+                shortenUrl();
+            } else {
+                isUrlShortened = false;
+                shortenedUrl = '';
+            }
         }
+    }
+    
+    function shortenUrl() {
+        if (searchInput.value.trim() === '') return;
+        
+        // Show shortening status
+        shorteningStatus.classList.remove('hidden');
+        shorteningStatus.classList.add('visible');
+        
+        // Use TinyURL API to shorten the URL
+        const longUrl = encodeURIComponent(originalUrl);
+        const apiUrl = `https://tinyurl.com/api-create.php?url=${longUrl}`;
+        
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                shortenedUrl = data;
+                linkDisplay.value = shortenedUrl;
+                isUrlShortened = true;
+                shorteningStatus.classList.add('hidden');
+                shorteningStatus.classList.remove('visible');
+            })
+            .catch(error => {
+                console.error('Error shortening URL:', error);
+                linkDisplay.value = originalUrl;
+                isUrlShortened = false;
+                shorteningStatus.classList.add('hidden');
+                shorteningStatus.classList.remove('visible');
+                
+                // Uncheck the checkbox if there was an error
+                shortenUrlCheckbox.checked = false;
+            });
     }
     
     function copyLink() {

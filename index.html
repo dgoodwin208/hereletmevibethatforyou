@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Here, Let Me Vibe That For You</title>
+    <meta name="description" content="For those moments when typing their question into an AI would have been easier than asking you.">
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="icon" type="image/png" href="src/images/favicon.ico">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="Here, Let Me Vibe That For You">
-    <meta property="og:description" content="For all those questions that could have been answered by Phind">
+    <meta property="og:description" content="For those moments when typing their question into an AI would have been easier than asking you.">
     <meta property="og:image" content="src/images/og-image.png">
     <meta property="og:url" content="https://letmevibethat.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Here, Let Me Vibe That For You">
+    <meta name="twitter:description" content="For those moments when typing their question into an AI would have been easier than asking you.">
+    <meta name="twitter:image" content="src/images/og-image.png">
 </head>
 <body>
     <div class="container" id="home-container">
@@ -26,6 +36,17 @@
                 <div class="link-container">
                     <input type="text" id="link-display" readonly>
                     <button id="copy-button">Copy</button>
+                </div>
+                <div class="url-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="shorten-url">
+                        <span class="checkmark"></span>
+                        Shorten URL
+                    </label>
+                    <div id="shortening-status">
+                        <div class="mini-spinner"></div>
+                        <span>Shortening...</span>
+                    </div>
                 </div>
                 <p id="copy-message" class="hidden">Link copied to clipboard!</p>
             </div>

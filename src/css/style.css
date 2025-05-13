@@ -118,6 +118,88 @@ h1 {
     margin-top: 10px;
 }
 
+.url-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    max-width: 600px;
+    font-size: 14px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    color: #666;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: relative;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin-right: 8px;
+    background-color: #eee;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.checkbox-container:hover .checkmark {
+    background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #2E59C7;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+#shortening-status {
+    display: none;
+    align-items: center;
+    font-size: 14px;
+    color: #2E59C7;
+}
+
+#shortening-status.visible {
+    display: flex;
+}
+
+.mini-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(46, 89, 199, 0.2);
+    border-radius: 50%;
+    border-top-color: #2E59C7;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
 /* Animation Page Styles */
 #animation-page {
     min-height: 100vh;
