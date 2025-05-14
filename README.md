@@ -1,5 +1,7 @@
 # Here, Let Me Vibe That For You
 
+![Here, Let Me Vibe That For You](src/images/lmvtfy.jpg)
+
 A fun, interactive website inspired by "Let Me Google That For You" but for Phind.
 
 ## About
